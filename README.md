@@ -55,6 +55,14 @@ mysql> show columns from accounts;
 
 mysql> select * from accounts;
 
+---------------------------
+UPDATE INSTRUCTIONS
+
+-Remove the "my-mysql" image from the Docker Engine
+
+-Remove the "my-mysql" container from the Docker Engine
+
+-Follow the instructions again
 
 ---------------------------
 TABLES ATTRIBUTES:
