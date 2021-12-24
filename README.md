@@ -3,10 +3,12 @@ This is the mysql DB of the WeFix project
 
 ---------------------------
 PREREQUISITES
+
 -install docker
 
 ---------------------------
 INSTUCTIONS
+
 -Download the "my-mysql" folder
 
 -Start Docker Engine
