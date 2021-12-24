@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  mymysql:
+    image: mymysql
+    build:
+      context: .
+      dockerfile: ./Dockerfile
