@@ -55,6 +55,14 @@ mysql> show columns from accounts;
 
 mysql> select * from accounts;
 
+---------------------------
+UPDATE INSTRUCTIONS
+
+-Remove the "my-mysql" image from the Docker Engine
+
+-Remove the "my-mysql" container from the Docker Engine
+
+-Follow the instructions again
 
 ---------------------------
 TABLES ATTRIBUTES:
@@ -70,23 +78,23 @@ second_name varchar(15) NOT NULL,
 
 email  varchar(50) NOT NULL,
 
-user_password varchar(256) NOT NULL,
+user_password varchar(64) NOT NULL,
 
 user_role varchar(50) NOT NULL,
 
-bio TEXT,
+bio varchar(128),
 
 photo_profile BLOB,
 
-date_reset TEXT,
+date_reset TIMESTAMP,
 
-reset_code TEXT,
+reset_code varchar(64),
 
-p_iva TEXT,
+p_iva varchar(11),
 
-identity_card_number TEXT
+identity_card_number varchar(7)
 
-)
+);
 
 
 
