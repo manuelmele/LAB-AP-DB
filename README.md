@@ -51,9 +51,9 @@ mysql> show tables;
 
 -Show accounts table:
 
-mysql> show columns from accounts;
+mysql> show columns from account;
 
-mysql> select * from accounts;
+mysql> select * from account;
 
 ---------------------------
 UPDATE INSTRUCTIONS
