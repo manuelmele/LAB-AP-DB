@@ -41,7 +41,7 @@ $ docker exec -it my-mysql bash
 
 root@c86ff80d7524:/# mysql -uroot -p
 
-Enter password: (supersecret)
+Enter password: supersecret
 
 mysql> show databases;
 

@@ -1,2 +1,2 @@
 INSERT INTO account (first_name, second_name, email, user_password, user_role) 
-VALUES ('Manuel', 'Popghi', 'popghi@mail.com', 'passwordSHA', 'customer');
+VALUES ('Marco', 'Rossi', 'marcorossi@live.com', '18239cc193556ead35daf750184084b2b210ac8a9130fa8d1c0f2440875c1317', 'Customer');
