@@ -6,7 +6,7 @@ CREATE TABLE `account` (
   `user_password` varchar(64) NOT NULL,
   `user_role` varchar(8) NOT NULL,
   `bio` varchar(128) DEFAULT NULL,
-  `photo_profile` blob,
+  `photo_profile` longblob,
   `date_reset` timestamp NULL DEFAULT NULL,
   `reset_code` varchar(64) DEFAULT NULL,
   `p_iva` varchar(11) DEFAULT NULL,
