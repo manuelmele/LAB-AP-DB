@@ -13,20 +13,7 @@ CREATE TABLE `account` (
   `identity_card_number` varchar(7) DEFAULT NULL,
   `category` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE `gallery` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int DEFAULT NULL,
-  `image` blob,
-  `price` decimal(10,2) DEFAULT NULL,
-  `description` varchar(256) DEFAULT NULL,
-  `title` varchar(64) DEFAULT NULL,
-  `deleted` tinyint DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `user_id_idx` (`user_id`),
-  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `meeting` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -42,15 +29,28 @@ CREATE TABLE `meeting` (
   CONSTRAINT `userId_receive` FOREIGN KEY (`userId_receive`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE `product` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int DEFAULT NULL,
+  `image` blob,
+  `price` decimal(10,2) DEFAULT NULL,
+  `description` varchar(256) DEFAULT NULL,
+  `title` varchar(64) DEFAULT NULL,
+  `deleted` tinyint DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `user_id_idx` (`user_id`),
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE `review` (
   `id` int NOT NULL AUTO_INCREMENT,
   `userId_receive` int DEFAULT NULL,
   `userId_assign` int DEFAULT NULL,
   `content` varchar(256) DEFAULT NULL,
+  `star` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `userId_receive1_idx` (`userId_receive`),
   KEY `userId_assign2_idx` (`userId_assign`),
   CONSTRAINT `userId_assign2` FOREIGN KEY (`userId_assign`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `userId_receive1` FOREIGN KEY (`userId_receive`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
