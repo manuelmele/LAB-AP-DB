@@ -17,16 +17,20 @@ CREATE TABLE `account` (
 
 CREATE TABLE `meeting` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `userId_receive` int DEFAULT NULL,
-  `userId_assign` int DEFAULT NULL,
+  `userId_worker` int DEFAULT NULL,
+  `userId_customer` int DEFAULT NULL,
+  `description` varchar(128) DEFAULT NULL,
   `date` timestamp NULL DEFAULT NULL,
-  `slot_time` decimal(2,2) DEFAULT NULL,
+  `slot_time` varchar(8) DEFAULT NULL,
   `accepted` tinyint DEFAULT NULL,
+  `started` tinyint DEFAULT NULL,
+  `lat` double DEFAULT NULL,
+  `lng` double DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `userId_receive_idx` (`userId_receive`),
-  KEY `userId_assign_idx` (`userId_assign`),
-  CONSTRAINT `userId_assign` FOREIGN KEY (`userId_assign`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `userId_receive` FOREIGN KEY (`userId_receive`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  KEY `userId_worker_idx` (`userId_worker`),
+  KEY `userId_customer_idx` (`userId_customer`),
+  CONSTRAINT `userId_customer` FOREIGN KEY (`userId_customer`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `userId_worker` FOREIGN KEY (`userId_worker`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `product` (
