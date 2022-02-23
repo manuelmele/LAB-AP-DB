@@ -21,7 +21,7 @@ CREATE TABLE `meeting` (
   `userId_customer` int DEFAULT NULL,
   `description` varchar(128) DEFAULT NULL,
   `date` timestamp NULL DEFAULT NULL,
-  `slot_time` varchar(8) DEFAULT NULL,
+  `slot_time` varchar(32) DEFAULT NULL,
   `accepted` tinyint DEFAULT NULL,
   `started` tinyint DEFAULT NULL,
   `lat` double DEFAULT NULL,
