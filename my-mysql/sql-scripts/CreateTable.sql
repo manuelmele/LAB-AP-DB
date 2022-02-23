@@ -10,10 +10,10 @@ CREATE TABLE `account` (
   `date_reset` timestamp NULL DEFAULT NULL,
   `reset_code` varchar(64) DEFAULT NULL,
   `p_iva` varchar(11) DEFAULT NULL,
-  `identity_card_number` varchar(7) DEFAULT NULL,
+  `identity_card_number` varchar(9) DEFAULT NULL,
   `category` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `meeting` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -33,6 +33,21 @@ CREATE TABLE `meeting` (
   CONSTRAINT `userId_worker` FOREIGN KEY (`userId_worker`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE `payment` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `account_id` int DEFAULT NULL,
+  `date` timestamp NULL DEFAULT NULL,
+  `deadline` timestamp NULL DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `currency` varchar(10) DEFAULT NULL,
+  `paymentId` varchar(64) DEFAULT NULL,
+  `payerId` varchar(64) DEFAULT NULL,
+  `is_valid` tinyint DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `sds_idx` (`account_id`),
+  CONSTRAINT `user` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE `product` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int DEFAULT NULL,
@@ -44,7 +59,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `review` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -57,4 +72,4 @@ CREATE TABLE `review` (
   KEY `userId_assign2_idx` (`userId_assign`),
   CONSTRAINT `userId_assign2` FOREIGN KEY (`userId_assign`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `userId_receive1` FOREIGN KEY (`userId_receive`) REFERENCES `account` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
