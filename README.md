@@ -32,7 +32,7 @@ $ docker images
 
 -Start a docker container(port is 3306, my-mysql is the container name, supersecret is the password)
 
-$ docker run -d -p 3306:3306 --name my-mysql -e MYSQL_ROOT_PASSWORD=supersecret my-mysql
+$ docker run -d -p 3306:3306 --name my-mysql -e MYSQL_ROOT_PASSWORD=supersecret my-mysql --secure-file-priv=$(pwd)/sql-scripts/images
 
 
 -Verify we have our WeFix db:
